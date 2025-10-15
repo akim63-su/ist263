@@ -1,0 +1,49 @@
+.flex-box {
+    display: flex;
+
+    gap: 20px;                    
+    justify-content: center;      
+    align-items: stretch;         
+    margin-top: 20px;
+}
+.flex-item {
+    flex: 1 1 250px;              
+    background-color: #f4f4f4;    
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flex-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+
+header {
+    text-align: center;
+    background-color: #004d80;
+    color: white;
+    padding: 30px 10px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
