@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shell Game - Dynamic Version</title>
+    <link rel="stylesheet" href="animate2.css">
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        #first { order: 1; }
+        #second { order: 2; }
+        #third { order: 3; }
+
+        #messageArea {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function WinnerMessage() {
+            document.getElementById("messageArea").innerHTML = "Correct! You found the pea!";
+        }
+
+        function TryAgain() {
+            document.getElementById("messageArea").innerHTML = "Wrong shell. Try again!";
+        }
+
+        function ShuffleShells() {
+            let order = [1, 2, 3];
+            order.sort(() => Math.random() - 0.5);
+
+            document.getElementById("first").style.order = order[0];
+            document.getElementById("second").style.order = order[1];
+            document.getElementById("third").style.order = order[2];
+        }
+    </script>
+</head>
+
+<body onload="ShuffleShells();">
+    <h1>Shell Game</h1>
+
+    <div class="container">
+        <img id="first" src="walnut1.png" onclick="WinnerMessage();">
+        <img id="second" src="walnut2.png" onclick="TryAgain();">
+        <img id="third" src="walnut3.png" onclick="TryAgain();">
+    </div>
+
+    <div id="messageArea"></div>
+
+</body>
+</html>
+
