@@ -1,59 +1,62 @@
 <!DOCTYPE html>
- <html>
- <head>
-     <meta charset="utf-8">
-     <title>Lab 12 Slideshow</title>
-     <style>
-        #mercuryinfo,
-        #venusinfo,
-        #earthinfo,
-        #marsinfo,
-        #jupiterinfo,
-        #saturninfo,
-        #uranusinfo,
-        #neptuneinfo {
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lab 12 Slideshow</title>
+    <style>
+        #mercuryinfo, #venusinfo, #earthinfo, #marsinfo,
+        #jupiterinfo, #saturninfo, #uranusinfo, #neptuneinfo {
             display: none;
         }
-        #venus, #venusInfo,
-        #earth, #earthInfo,
-        #mars, #marsInfo,
-        #jupiter, #jupiterInfo,
-        #saturn, #saturnInfo,
-        #uranus, #uranusInfo,
-        #neptune, #neptuneInfo {
-        display: none;
+        #venus, #venusinfo,
+        #earth, #earthinfo,
+        #mars, #marsinfo,
+        #jupiter, #jupiterinfo,
+        #saturn, #saturninfo,
+        #uranus, #uranusinfo,
+        #neptune, #neptuneinfo {
+            display: none;
+            width: 100%;
         }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        #slideshow-container {
+            width: 1200px;
+            margin: auto;
+        }
+
+        #content-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
         #bigimages {
-            float: left;
             width: 50%;
         }
 
         #planetinfo {
-            float: right;
             width: 50%;
-            padding: 20px; 
+            padding-left: 20px;
         }
 
-        .clearfix {
-            clear: both;
+        #thumbnails {
+            width: 840px;
+            margin: 20px auto;
+            text-align: center;
         }
 
-         body {
-             font-family: Verdana, Geneva, Tahoma, sans-serif; 
-             background-color: #111111;
-             color: #ffffff;
-         }
-         #slideshow-container {
-             background-color: #000000;
-             width: 1200px;
-             margin: auto;  
-             display: flex;
-             padding: 20px;    
-         }
-         #thumbnails {width: 840px; margin: auto; padding-top: 20px;} 
-         #mercurythumb, #venusthumb, #earththumb, #marsthumb, #jupiterthumb, #saturnthumb, #uranusthumb, #neptunethumb 
-         {width: 100px;}
-     </style>
+        #thumbnails img {
+            width: 100px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
      <script>
     function PlanetsOff() {
         document.getElementById('mercury').style.display = 'none';
@@ -111,6 +114,7 @@
  </head>
  <body>
  <div id="slideshow-container">
+    <div id="content-row">
      <div id="bigimages">
          <img src="../Images/mercury.jpg" alt="mercury" id="mercury">
          <img src="../Images/venus.jpg" alt="venus" id="venus">
@@ -155,7 +159,8 @@
              <h2>Neptune</h2>
              <p>Neptune is the eighth and farthest-known Solar planet from the Sun. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet. It is 17 times the mass of Earth, slightly more massive than its near-twin Uranus.</p>
             </div>
-            <div class="clearfix"></div>
+        </div>
+    </div>
         
          <div id="thumbnails">
         <img src="../Images/mercury.jpg" alt="mercury" id="mercurythumb" onclick="PlanetsOff(); mercuryOn();">
