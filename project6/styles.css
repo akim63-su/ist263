@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #0d47a1;
+  color: #0A2E57;
   text-decoration: none;
 }
 
@@ -45,6 +45,7 @@ nav li {
 nav a {
   font-weight: 600;
   padding: 5px 0;
+  color: #ffffff;
 }
 
 nav a::after {
