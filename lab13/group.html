@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chevy Cruze Car Screen</title>
+    <script>
+      const cuseTempAPI =
+        "https://api.weather.gov/gridpoints/BGM/52,99/forecast";
+
+      function getSyracuseTemp() {
+        fetch(cuseTempAPI)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            const startTime = new Date(data.properties.periods[0].startTime);
+            const timeString = startTime.toLocaleString("en-US", {
+              weekday: "short",
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+
+            const temp = data.properties.periods[0].temperature;
+            const forecast = data.properties.periods[0].detailedForecast;
+            const icon = data.properties.periods[0].icon;
+
+            console.log(icon);
+
+            document.getElementById("icon").setAttribute("src", icon);
+            document.getElementById("time").innerHTML = timeString;
+            document.getElementById("temp").innerHTML = temp + "°F";
+            document.getElementById("forecast").innerHTML = forecast;
+
+            document.getElementById("cuse-weather").innerHTML =
+              "Syracuse, NY • Current Weather";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("forecast").innerHTML =
+              "Unable to load weather. Please try again.";
+          });
+      }
+
+      function getCurrentDate() {
+        const now = new Date(); 
+        const formattedDate = now.toLocaleDateString("en-US"); 
+        const formattedTime = now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        document.getElementById("date").innerHTML = formattedDate;
+
+        const topDate = document.getElementById("top-date");
+        const topTime = document.getElementById("top-time");
+        if (topDate && topTime) {
+          topDate.innerHTML = formattedDate;
+          topTime.innerHTML = formattedTime;
+        }
+
+        console.log(formattedDate, formattedTime);
+      }
+
+      window.onload = function () {
+        getCurrentDate();
+      };
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      #car-screen {
+        width: 480px;
+        height: 320px;
+        background: radial-gradient(circle at top, #222 0%, #050505 70%);
+        border-radius: 24px;
+        border: 2px solid #333;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        color: #f5f5f5;
+        padding: 16px 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .brand {
+        font-weight: 700;
+      }
+
+      .model {
+        opacity: 0.8;
+        font-size: 0.8rem;
+      }
+
+      .top-datetime span {
+        display: block;
+        text-align: right;
+        line-height: 1.2;
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      #cuse-weather {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        opacity: 0.85;
+        margin-bottom: 4px;
+      }
+
+      .weather-display {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(4px);
+      }
+
+      #icon {
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .weather-main {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
+      }
+
+      #temp {
+        font-size: 2.4rem;
+        font-weight: 600;
+      }
+
+      #time {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      #forecast {
+        font-size: 0.8rem;
+        opacity: 0.9;
+        max-height: 3.2em;
+        overflow: hidden;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      .controls button {
+        flex: 1;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #ff7b00, #ffb347);
+        color: #111;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      .controls button:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .bottom-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin-top: 4px;
+      }
+
+      #date {
+        opacity: 0.85;
+      }
+
+      .status {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="car-screen">
+      <div class="top-bar">
+        <div>
+          <div class="brand">CHEVROLET</div>
+          <div class="model">Cruze Infotainment</div>
+        </div>
+        <div class="top-datetime">
+          <span id="top-date">--/--/----</span>
+          <span id="top-time">--:--</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div>
+          <h2 id="cuse-weather">Syracuse, NY • Weather</h2>
+
+          <div class="weather-display">
+            <img id="icon" src="" alt="Weather icon" />
+            <div class="weather-main">
+              <div id="temp">--°F</div>
+              <div id="time">Loading time...</div>
+              <p id="forecast">Press "Update Weather" to load forecast.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button onclick="getSyracuseTemp()">Update Weather</button>
+          <button onclick="getCurrentDate()">Update Date/Time</button>
+        </div>
+
+        <div class="bottom-row">
+          <p id="date">--/--/----</p>
+          <p class="status">Chevy Cruze • Ready</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
