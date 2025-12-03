@@ -154,8 +154,8 @@ main { flex: 1; }
   }
     iframe { width:100%; min-height:420px; border:0; border-radius:8px; }
 
-    footer { text-align:center; padding:16px; margin: 30px 0 10px; color:#333; }
+    footer { text-align:center; padding:16px; margin: 30px 0 10px; color:#ffffff; }
     footer p {
-  color: white !important;
+  color: white !important; 
 }
 
