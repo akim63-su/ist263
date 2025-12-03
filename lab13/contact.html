@@ -31,7 +31,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="maincontent">
     <h1>Contact</h1>
 
     <section class="hero" aria-labelledby="addr-title">
@@ -51,15 +51,16 @@
           <label for="name">Your Name</label>
           <input id="name" name="name" type="text" required>
 
-          <div class="radios">
-            <span style="font-weight:600;">Reason for contact:</span><br>
-            <input id="officehours" name="reason" type="radio" value="Office Hours">
-            <label for="officehours">Office Hours</label>
+          <fieldset class="radios">
+          <legend>Reason for contact:</legend>
 
-            <input id="consulting" name="reason" type="radio" value="Career Consulting">
-            <label for="consulting">Career Consulting</label>
-          </div>
+          <input id="officehours" name="reason" type="radio" value="Office Hours">
+          <label for="officehours">Office Hours</label>
 
+          <input id="consulting" name="reason" type="radio" value="Career Consulting">
+          <label for="consulting">Career Consulting</label>
+          </fieldset>
+          
           <label for="comments">Comments</label>
           <textarea id="comments" name="comments" rows="5"></textarea>
 
